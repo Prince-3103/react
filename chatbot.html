@@ -18,6 +18,7 @@
       function ChatInput({chatMessages, setChatMessages}){
 
         const [inputText, setInputText] = React.useState("");
+        const [isLoading, setIsLoading] = React.useState(false)
 
         function saveInputText(event){
           setInputText(event.target.value);
@@ -32,6 +33,12 @@
         }
 
         async function sendMessage(){
+          if(isLoading || inputText===''){
+            return;
+          }
+          setIsLoading(true)
+          setInputText("");
+
           const newChatMessage = [
             ...chatMessages,
             {
@@ -40,8 +47,17 @@
               id: crypto.randomUUID()
             }
           ];
-          
           setChatMessages(newChatMessage)
+
+          setChatMessages([
+            ...newChatMessage,
+            {
+              message: "Loading...",
+              sender: "robot",
+              id: crypto.randomUUID()
+            }
+          ])
+          
 
           const response = await Chatbot.getResponseAsync(inputText);
           setChatMessages([
@@ -52,6 +68,8 @@
               id: crypto.randomUUID()
             }
           ])
+
+          setIsLoading(false)
 
           setInputText("");
         }
