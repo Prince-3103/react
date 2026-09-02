@@ -1,29 +1,3 @@
-.send-button{
-  background-color: #198754;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  margin-left: 10px;
-  border-radius: 10px;
-  font-size: 15px;
-  cursor: pointer;
-}
-.loading{
-  height: 40px;
-  margin: -15px;
-}
-.chat-input{
-  padding: 12px 15px;
-  border-radius: 10px;
-  border-width: 1px;
-  font-size: 15px;
-  flex-grow: 1;
-}
-.chat-input-container{
-  display: flex;
-  margin-bottom: 60px;
-}
-
 .app-container{
   max-width: 600px;
   margin-left: auto;
@@ -32,34 +6,4 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.user-message{
-  display: flex;
-  justify-content: end;
-  align-items: start;
-}
-.robot-message{
-  display: flex;
-  align-items: start;
-}
-
-.text-message{
-  padding: 15px 20px;
-  background-color: rgb(223, 222, 222);
-  border-radius: 10px;
-  margin: 12px 10px;
-  max-width: 300px;
-}
-
-.img-profile{
-  width: 45px;
-  margin-top: 10px;
-}
-
-.chat-message-container{
-  flex-grow: 1;
-  margin-top: 20px;
-  overflow: scroll;
-  scrollbar-width: none;
 }
