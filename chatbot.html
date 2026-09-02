@@ -19,6 +19,10 @@
         font-size: 15px;
         cursor: pointer;
       }
+      .loading{
+        height: 40px;
+        margin: -15px;
+      }
       .chat-input{
         padding: 12px 15px;
         border-radius: 10px;
@@ -121,7 +125,7 @@
           setChatMessages([
             ...newChatMessage,
             {
-              message: "Loading...",
+              message: <img src="/product-img/loading-spinner.gif" className="loading" />,
               sender: "robot",
               id: crypto.randomUUID()
             }
@@ -185,13 +189,18 @@
 
       function ChatMessages({chatMessages}){
         const chatMessagesRef = React.useRef(null);
-
         React.useEffect(() => {
           const containerElem = chatMessagesRef.current;
           if(containerElem){
             containerElem.scrollTop = containerElem.scrollHeight;
           }
         },[chatMessages])
+
+        if(chatMessages.length === 0){
+          return (
+            <h3 className="chat-message-container">Welcome to ChatBot project! Send a message using the textbox below.</h3>
+          )
+        }
   
         return (
           <div className="chat-message-container" ref={chatMessagesRef}>
@@ -209,15 +218,7 @@
       }
 
       function App(){
-          const [chatMessages, setChatMessages] = React.useState([{
-          message: "yo chatbot",
-          sender: "user",
-          id: "id01"
-        },{
-          message: "Yo! How can I help you?",
-          sender: "robot",
-          id: "id02"
-        }]);
+        const [chatMessages, setChatMessages] = React.useState([]);
 
 
         return (
